@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'pages/home'
+  get 'pages/about'
+
+  resources :articles    
   devise_for :users,
-             controllers: {
+              controllers: {
                sessions: 'users/sessions',
                registrations: 'users/registrations'
              }
