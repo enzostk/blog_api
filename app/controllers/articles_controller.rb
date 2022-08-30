@@ -4,8 +4,13 @@ class ArticlesController < ApplicationController
   before_action :check_id, only: %i[update destroy]
   # GET /articles
   def index
-    @articles = Article.all
-
+    if user_signed_in?
+      @articles = Article.where(private:false).or(
+        Article.where(private:true, user: User.first)
+      )
+    else
+      @articles = Article.where(private:false)
+    end
     render json: @articles
   end
 

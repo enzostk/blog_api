@@ -16,10 +16,11 @@ User.create(email: 'enzo1@example.fr', password: 'password', password_confirmati
 User.create(email: 'enzo2@example.fr', password: 'password', password_confirmation: 'password')
 User.create(email: 'enzo3@example.fr', password: 'password', password_confirmation: 'password')
 
-20.times do 
+10.times do 
   Article.create!(
      title: Faker::Games::Pokemon.name,
      content: Faker::ChuckNorris.fact,
-     user_id: User.all.sample.id     
+     user_id: User.all.sample.id,
+     private: false  
   )
 end
